@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Reset from "./Reset";
+import { Button, Typography } from "@mui/material";
 
 const Container = styled.div`
   font-family: Arial, sans-serif;
@@ -10,10 +11,10 @@ const Container = styled.div`
   background-color: #f5e1be;
 `;
 
-const Header = styled.h1`
-  color: blue;
-  padding-bottom: 10px;
-`;
+// const Header = styled.h1`
+//   color: blue;
+//   padding-bottom: 10px;
+// `;
 
 const CalculatorWrapper = styled.div`
   max-width: 300px;
@@ -36,23 +37,23 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-const Button = styled.button`
-  display: block;
-  width: 100%;
-  margin-bottom: 1em;
-  padding: 0.75em;
-  font-size: 1em;
-  border-radius: 5px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+// const Button = styled.button`
+//   display: block;
+//   width: 100%;
+//   margin-bottom: 1em;
+//   padding: 0.75em;
+//   font-size: 1em;
+//   border-radius: 5px;
+//   border: none;
+//   background-color: #007bff;
+//   color: #fff;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease;
 
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
+//   &:hover {
+//     background-color: #0056b3;
+//   }
+// `;
 
 const ErrorMessage = styled.p`
   color: red;
@@ -94,7 +95,7 @@ function Calculator() {
 
   return (
     <Container>
-      <Header>Laskin</Header>
+      <Typography variant="h2">Laskin</Typography>
       <CalculatorWrapper>
         <Input
           type="number"
@@ -108,7 +109,14 @@ function Calculator() {
           onChange={(e) => setNum2(e.target.value)}
           placeholder="Anna toinen numero"
         />
-        <Button onClick={handleCalculate}>Laske</Button>
+        <Button
+          sx={{ width: "200px" }}
+          variant="outlined"
+          onClick={handleCalculate}
+          size={"large"}
+        >
+          Laske
+        </Button>
         {error && <ErrorMessage>{error}</ErrorMessage>}
         {result !== null && !error && <Result>Tulos: {result}</Result>}
         <Reset onReset={handleReset} />
